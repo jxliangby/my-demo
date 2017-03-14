@@ -1,0 +1,219 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+     <parent>
+        <groupId>com.kissjava</groupId>
+        <artifactId>my-demo</artifactId>
+        <version>1.0.0</version>
+    </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>my-test</artifactId>
+  <packaging>war</packaging>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>my-demo Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+  
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java_source_version>1.8</java_source_version>
+		<java_target_version>1.8</java_target_version>
+		<file_encoding>UTF-8</file_encoding>
+		<org.springframework-version>4.3.2.RELEASE</org.springframework-version>
+		<spring.data.redis.version>1.7.2.RELEASE</spring.data.redis.version>
+		<spring.data.commons.version>1.12.2.RELEASE</spring.data.commons.version>
+		<hystrix.version>1.5.8</hystrix.version>
+		<hystrix-metrics-event-stream.version>1.1.2</hystrix-metrics-event-stream.version> 
+		<jetty.version>9.4.0.M1</jetty.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.alibaba.rocketmq</groupId>
+			<artifactId>rocketmq-client</artifactId>
+			<version>3.5.8</version>
+		</dependency>
+		<dependency>
+			<groupId>com.alibaba.rocketmq</groupId>
+			<artifactId>rocketmq-all</artifactId>
+			<version>3.5.8</version>
+			<type>pom</type>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-core</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>dom4j</groupId>
+			<artifactId>dom4j</artifactId>
+			<version>1.6</version>
+		</dependency>
+		<dependency>
+			<groupId>sax</groupId>
+			<artifactId>sax</artifactId>
+			<version>2.0.1</version>
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>fastjson</artifactId>
+				<version>1.2.16</version>
+			</dependency>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.2</version>
+		</dependency>
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<version>2.9.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${org.springframework-version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-web</artifactId>
+		    <version>${org.springframework-version}</version>
+		 </dependency>
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-commons</artifactId>
+			<version>${spring.data.commons.version}</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-redis</artifactId>
+			<version>${spring.data.redis.version}</version>
+		</dependency>
+		
+		<dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>19.0</version>
+        </dependency>
+       <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+            <version>5.0.0.Alpha1</version>
+        </dependency>
+        <!-- <dependency>
+        	<groupId>org.jboss.marshalling</groupId>
+			<artifactId>marshalling-api</artifactId>
+			<version>1.3.0.CR1</version>
+        </dependency>
+        <dependency>
+        	<groupId>org.jboss.marshalling</groupId>
+			<artifactId>jboss-marshalling-serial</artifactId>
+			<version>1.3.0.CR9</version>
+        </dependency> -->
+        
+		<dependency>
+			<groupId>com.netflix.hystrix</groupId>
+			<artifactId>hystrix-core</artifactId>
+			<version>${hystrix.version}</version>
+			<exclusions>
+				<exclusion>
+					 <groupId>io.reactivex</groupId>
+    				 <artifactId>rxjava</artifactId>
+				</exclusion>
+			</exclusions>
+		 </dependency>
+		 <dependency>
+		  	<groupId>io.reactivex</groupId>
+    		<artifactId>rxjava</artifactId>
+    		<version>1.2.3</version>
+		 </dependency>
+		<dependency>
+			<groupId>com.netflix.hystrix</groupId>
+			<artifactId>hystrix-metrics-event-stream</artifactId>
+			<version>${hystrix-metrics-event-stream.version}</version>
+		 </dependency>
+ 
+		<!-- test  -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>6.4</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>1.10.19</version>
+		</dependency>
+		<!-- jetty -->
+
+		<dependency>
+		     <groupId>org.eclipse.jetty</groupId>
+		     <artifactId>jetty-webapp</artifactId>
+		     <version>${jetty.version}</version>
+		 </dependency>
+		 
+		<!--  <dependency>
+		     <groupId>org.eclipse.jetty</groupId>
+		     <artifactId>jetty-jsp</artifactId>
+		     <version>${jetty.version}</version>
+		     <scope>provided</scope>
+		 </dependency> -->
+		 <dependency>
+		    <groupId>javax.servlet</groupId>
+		    <artifactId>javax.servlet-api</artifactId>
+		    <version>3.1.0</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>${java_source_version}</source>
+					<target>${java_target_version}</target>
+					<encoding>${file_encoding}</encoding>
+					<showDeprecation>true</showDeprecation>
+					<showWarnings>true</showWarnings>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

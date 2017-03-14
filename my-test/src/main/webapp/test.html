@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>XXX</title>
+</head>
+<body>
+<h1>come.........</h1>
+	<form id="form">
+		<span>name:</span><input name="name" type="text"/>
+		<span>c:</span><input name="c" type="checkbox" value="1"/>1<input name="c" type="checkbox" value="2"/>2
+		<span>b.name:</span><input name="b.name"  type="text"/>
+		<span>b.list:</span><input name="b.list" type="checkbox" value="c1"/>c1<input name="b.list" type="checkbox" value="c2"/>c2
+	</form>
+	<input id="btn" type="button" value="click"/>
+</body>
+<script src="js/jquery.js"></script>
+<script>
+  $(function(){
+	  $('#btn').click(function(){
+		  $.ajax({
+				type: 'POST',
+				url: 'http://localhost:8080/home/post.do' ,
+			    data:  $("form").serialize() ,
+			    dataType: 'json',
+			    success: function(data){
+			    	console.log(data);
+			    },
+			    error: function(e){
+			    }
+			});
+	  });
+  });
+</script>
+</html>

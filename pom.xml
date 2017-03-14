@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 		 
     <modelVersion>4.0.0</modelVersion>
     <inceptionYear>2012</inceptionYear>
     <groupId>com.kissjava</groupId>
     <artifactId>my-demo</artifactId>
-    <version>0.0.1</version>
+    <version>1.0.0</version>
     <packaging>pom</packaging>
     <name>my-demo</name>
     <url>https://github.com/jxliangby</url>
 
     <modules>
-
+		<module>my-demo</module>
+    <module>my-test</module>
+    <module>spring-boot</module>
     </modules>
 
     <properties>
@@ -41,6 +41,3 @@
 		</dependencies>
     </dependencyManagement>
 </project>
-
-
-
