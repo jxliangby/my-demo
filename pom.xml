@@ -11,9 +11,9 @@
     <url>https://github.com/jxliangby</url>
 
     <modules>
-		<module>my-demo</module>
-    <module>my-test</module>
-    <module>spring-boot</module>
+		<module>my-test</module>
+		<module>spring-boot</module>
+		<module>sql-tools</module>
     </modules>
 
     <properties>

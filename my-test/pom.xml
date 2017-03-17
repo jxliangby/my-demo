@@ -23,9 +23,25 @@
 		<hystrix.version>1.5.8</hystrix.version>
 		<hystrix-metrics-event-stream.version>1.1.2</hystrix-metrics-event-stream.version> 
 		<jetty.version>9.4.0.M1</jetty.version>
+		  <trueLicenseVersion>2.4.1</trueLicenseVersion>
 	</properties>
 
 	<dependencies>
+		 <dependency>
+            <groupId>net.java.truelicense</groupId>
+            <artifactId>truelicense-core</artifactId>
+            <version>${trueLicenseVersion}</version>
+        </dependency>
+       <!--  <dependency>
+            <groupId>net.java.truelicense</groupId>
+            <artifactId>truelicense-it</artifactId>
+            <version>${trueLicenseVersion}</version>
+        </dependency> -->
+		  <dependency>
+            <groupId>net.java.truelicense</groupId>
+            <artifactId>truelicense-json</artifactId>
+            <version>${trueLicenseVersion}</version>
+        </dependency>
 		<dependency>
 			<groupId>com.alibaba.rocketmq</groupId>
 			<artifactId>rocketmq-client</artifactId>
