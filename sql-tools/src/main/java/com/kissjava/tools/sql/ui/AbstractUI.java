@@ -229,7 +229,7 @@ public abstract class AbstractUI extends JPanel {
 		rulPanel.add(new JScrollPane(ruleText));
 		return rulPanel;
 	}
-	private static String TB_COL_SPlit = "--:";
+	private static String TB_COL_SPlit = "==>";
 	private static String RULE_COL_SPlit = "-->";
 	
 	protected List<DumpRule> ruleList(){

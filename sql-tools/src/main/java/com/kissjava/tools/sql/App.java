@@ -23,6 +23,8 @@ import java.util.Set;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JDialog;
+import javax.swing.JEditorPane;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -133,7 +135,7 @@ public class App extends JFrame {
 
 		this.setMinimumSize(new Dimension(1024, 700));
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setTitle("OpenAPI--严禁上生产");
+		this.setTitle("OpenAPI数据迁移工具--严禁上生产");
 		this.setVisible(true);
 	}
 
@@ -234,9 +236,13 @@ public class App extends JFrame {
 		btn.setFont(defaultFont);
 		return btn;
 	}
-	
+	private SampleDialog dialog;
 	private void showSamp(){
-		JOptionPane.showMessageDialog( this, sample);
+		//JOptionPane.showMessageDialog( this, sample);
+		if(dialog==null){
+			dialog = new SampleDialog(this, sample);
+		}
+		dialog.setVisible(true);
 	}
 	private void doInit() {
 		if (!checkBdInit()) {
@@ -359,7 +365,29 @@ public class App extends JFrame {
 		}
 		return sb.toString();
 	}
-
+	class SampleDialog extends JDialog{
+		private JEditorPane editorPane;
+		private String msg;
+		public SampleDialog(JFrame parent, String msg){
+			super(parent);
+			this.msg = msg;
+			init();
+		}
+		
+		void init(){
+			setLayout(new BorderLayout());
+			
+			editorPane = new JEditorPane();
+			editorPane.setEditable(false);
+			editorPane.setContentType("text/html");
+			editorPane.setText(msg);
+			add(new JScrollPane(editorPane), BorderLayout.CENTER);
+			setMinimumSize(new Dimension(600, 500));
+			setTitle("规则用例");
+			setLocationRelativeTo(null);
+			//this.setVisible(true);
+		}
+	}
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
@@ -369,7 +397,8 @@ public class App extends JFrame {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-				new App();
+				App app = new App();
+				app.setLocationRelativeTo(null);
 			}
 		});
 	}

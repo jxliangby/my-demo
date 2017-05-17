@@ -5,22 +5,22 @@ font-size:14px;
 }
 </style>
 <body>
-<h1>数据导出规则</h1>
-<span>需要导出的表以及对应的字段用</span><span  style="font-size:20px;color:red;">--:</span><span>隔开</span><br/>
-<span>其中--:前面为表名，后面为字段名</span><br/>
+<h1>数据导出替换规则</h1>
+<span>需要导出的表以及对应的字段用</span><span  style="font-size:20px;color:red;">==></span><span>隔开</span><br/>
+<span>其中==>前面为表名，后面为字段名</span><br/>
 <span>其中表名和字段名都可用</span><span  style="font-size:20px;color:red;">,</span><span>隔开</span><br/>
-<span>对应上述表及字段的导出规则用</span><span  style="font-size:20px;color:red;">--></span><span>隔开</span><br/>
+<span>对应上述表及字段的导出的替换规则用</span><span  style="font-size:20px;color:red;">--></span><span>隔开</span><br/>
 <span>其中-->前面为需要被替换的，后面为替换成对应的值</span><br/>
 <span style="font-size:20px;color:red;">样例如下：</span>
 
 <div style="background-color:white;font-size:14px;">
-api_interface--:target_url<br>
-https://www.10.0.3.1:80.com/-->https://test.com/test<br>
-https://www.10.0.3.1:83.com/-->https://test.com/test2<br>
-api_interface,api_authorization_control--:api_id<br>
-crt.cp.apps.appCouponCount-->crt.cp.Apps.AppCouponCount<br>
-crv.ewjeb.member.aaaaaaaaaa-->crv.ewjeb.member.AAAAAAAAA<br>
-crass.j1eb.tw.head-->crass.j1eb.tw.HEAD<br>
+<span style="color:#2f54d0">api_interface==>target_url</span><br>
+<span>https://www.10.0.3.1:80.com/-->https://test.com/test</span><br>
+<span>https://www.10.0.3.1:83.com/-->https://test.com/test2</span><br>
+<span style="color:#2f54d0">api_interface<span style="color:red">,</span>api_authorization_control==>api_id</span><br>
+<span>crt.cp.apps.appCouponCount-->crt.cp.Apps.AppCouponCount</span><br>
+<span>crv.ewjeb.member.aaaaaaaaaa-->crv.ewjeb.member.AAAAAAAAA</span><br>
+<span>crass.j1eb.tw.head-->crass.j1eb.tw.HEAD</span><br>
 </div>
 
 </body>
