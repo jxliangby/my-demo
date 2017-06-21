@@ -3,12 +3,20 @@
 const bodyParser = require('koa-bodyparser');
 
 const controller = require('./controller');
+const path = require('path')
+const static = require('koa-static');
 
 const templating = require('./templating');
 
 const app = new Koa();
 
 const isProduction = process.env.NODE_ENV === 'production';
+// 静态资源目录对于相对入口文件index.js的路径
+const staticPath = '/static'
+
+app.use(static(
+  path.join( __dirname,   staticPath)
+))
 
 // log request URL:
 app.use(async (ctx, next) => {
@@ -22,11 +30,12 @@ app.use(async (ctx, next) => {
 });
 
 // static file support:
-if (! isProduction) {
+/**
+  if (! isProduction) {
     let staticFiles = require('./static-files');
     app.use(staticFiles('/static/', __dirname + '/static'));
 }
-
+*/
 // parse request body:
 app.use(bodyParser());
 

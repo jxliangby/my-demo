@@ -73,8 +73,8 @@ public class App extends JFrame {
 	
 	private void initTestData() {
 		userText.setText("root");
-		passwordText.setText("1qaz@WSX");
-		urlText.setText("jdbc:mysql://10.0.53.19:3306/openapi20161022");
+		passwordText.setText("XXXXXXXXXXX");
+		urlText.setText("jdbc:mysql://XXXXXXXXXXXX");
 	}
 	private void loadPropertis(){
 		new SwingWorker<Void, Void>() {

@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.Enumeration;
 import java.util.concurrent.atomic.AtomicLong;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -31,10 +32,23 @@ public class Bootstrap {
 	private final AtomicLong counter = new AtomicLong();
 
 	@RequestMapping("/greeting")
-	public String greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
+	public String greeting(@RequestParam(value = "name", defaultValue = "World") String name,HttpServletRequest request) {
+		//request.
 		return "user id =" + counter.incrementAndGet() + String.format(template, name);
 	}
+	private static final String SESSION_USER = "-user-";
 	
+	private void login(HttpServletRequest request){
+		Object obj = request.getSession().getAttribute(SESSION_USER);
+		if(obj!=null){
+			return;
+		}
+		request.getSession().setAttribute(SESSION_USER, request.getSession().getId());
+	}
+	private boolean isLogin(HttpServletRequest request){
+		Object obj = request.getSession().getAttribute(SESSION_USER);
+		return obj!=null;
+	}
 	@RequestMapping("/15s")
 	public void s15(HttpServletRequest request, HttpServletResponse response){
 		try{
@@ -64,7 +78,24 @@ public class Bootstrap {
 		}
 		openApi("5s", request, response);
 	}
-	
+	@RequestMapping("/1s")
+	public void s1(HttpServletRequest request, HttpServletResponse response){
+		try{
+			Thread.sleep(1000);
+		}catch(Exception e){
+			
+		}
+		openApi("1s", request, response);
+	}
+	@RequestMapping("/500ms")
+	public void ms500(HttpServletRequest request, HttpServletResponse response){
+		try{
+			Thread.sleep(500);
+		}catch(Exception e){
+			
+		}
+		openApi("500ms", request, response);
+	}
 	@RequestMapping(value = "/big")
 	public void big(HttpServletRequest request, HttpServletResponse response) {
 		
@@ -77,9 +108,16 @@ public class Bootstrap {
 	}
 	@RequestMapping(value = "/normal")
 	public void printHead2(HttpServletRequest request, HttpServletResponse response) {
+		response.addCookie(new Cookie("token", "aaaallllllllll"));
 		JSONObject msg = new JSONObject();
 		msg.put("id", RandomStringUtils.randomAlphanumeric(10));
 		msg.put("name", RandomStringUtils.randomAlphabetic(10));
+		if(isLogin(request)){
+			msg.put("isLogin", "true");
+		}else{
+			msg.put("isLogin", "false");
+			login(request);
+		}
 		openApi(msg.toJSONString(), request, response);
 	}
 	
