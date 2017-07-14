@@ -108,7 +108,9 @@ public class Bootstrap {
 	}
 	@RequestMapping(value = "/normal")
 	public void printHead2(HttpServletRequest request, HttpServletResponse response) {
-		response.addCookie(new Cookie("token", "aaaallllllllll"));
+		response.addCookie(new Cookie("cookie2", "1234567890"));
+		response.addCookie(new Cookie("token", "atoken123456"));
+		
 		JSONObject msg = new JSONObject();
 		msg.put("id", RandomStringUtils.randomAlphanumeric(10));
 		msg.put("name", RandomStringUtils.randomAlphabetic(10));
@@ -137,7 +139,11 @@ public class Bootstrap {
 	private void openApi(String msg , HttpServletRequest request, HttpServletResponse response){
 		
 		encoding(response); 
+		Cookie[] cookies = request.getCookies();
 		
+		for(Cookie cookie:cookies){
+			System.out.println(cookie.getValue()+"--"+cookie.getName());
+		}
 		JSONObject root = new JSONObject();
 		JSONObject respJson= new JSONObject();
 		root.put("RESPONSE", respJson);

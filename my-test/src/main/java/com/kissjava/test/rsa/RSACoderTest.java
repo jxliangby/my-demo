@@ -64,9 +64,9 @@ public class RSACoderTest {
     
     public static void main(String[] args) throws Exception{
     	RSACoderTest test = new RSACoderTest();
-    	//test.setUp();
+    	test.setUp();
     	//test.test();
-    	//test.testSign();
+    	test.testSign();
     	String sn = "2017-03-06 15:58:29:838F7C9170B4EE6A065E2FA4E46F80051D1123456789qw";
     	System.out.println(sn.substring(0, 64));
     }
