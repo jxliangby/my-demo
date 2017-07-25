@@ -15,6 +15,7 @@ while true do
 	lc = lc + t
 	print(lc,wc,cc)
 end
+
 print(lc,wc,cc)	
 print(string.format("total time:%.2f\n", os.clock()-start))
 io.write("sin(3) = ", math.sin(3))

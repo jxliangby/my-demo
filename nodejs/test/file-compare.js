@@ -6,5 +6,6 @@ var nots = logApis.filter((s)=>{
 }).map((x)=>{
 	return x.replace(/"/g,"'");
 });
+
 console.log(nots);
 fs.writeFileSync('out-api-out.txt', nots.join(',\r\n'));
