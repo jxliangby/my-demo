@@ -1,5 +1,5 @@
 local template = require("resty.template")  
-  
+
 local context = {  
     title = "测试",  
     name = "张三",  
@@ -13,5 +13,9 @@ local context = {
         {name = "英语", score = 70},  
     }  
 }  
-  
+--ngx.say("aaa")
 template.render("template.html", context) 
+--local func = template.compile("template.html")  
+--local content = func(context)  
+--通过ngx API输出  
+--ngx.say(content)
