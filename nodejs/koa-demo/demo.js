@@ -7,6 +7,7 @@ app.context.config={
     traceOpen:true,
     zkServer:'10.0.53.134:2181,10.0.53.135:2181,10.0.53.136:2181',
     traceTopic:'zipkin',
+    traceOpen:true,
     traceDebug:true
   }
 }
@@ -25,7 +26,7 @@ app.Logger = {
     }
 }
 
-app.use(trace.crtTrace(app,{port:port}));
+app.use(trace(app,{port:port}));
 
 app.use(async function (ctx, next) {
   console.log('response start.............');

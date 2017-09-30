@@ -12,16 +12,17 @@ const SID				=	'ctsspanid';
 const PID				=	'ctsparentspanid';
 const CTS_TRACE_ID		=	'ctstraceid';
 const CTS_TIMESTAMP		=	'ctstimestamp';
+const DEFAULT_TRACE_TOPIC		=	'zipkin';
 //是否开启追踪
-const traceOpen			=	true;
-const TRACE_TOPIC		=	'zipkin';
+let traceOpen			=	true;
+let traceTopic   		=	DEFAULT_TRACE_TOPIC;
 let app,Logger=null;
 let debug				=	true;
 let ip,port = 0;
 let defaultServiceName	=	'mid';
 let kafkaProducer		= 	null;
 
-module.exports.crtTrace = (app,opts) => {
+module.exports = (app,opts) => {
 	opts = opts || {};
 
 	port = opts.port || port;
@@ -65,14 +66,22 @@ function initTrace(app){
 		return;
 	}
 	let {traceConfig} = app.context.config;
+	if (traceConfig.traceOpen!=null){
+		traceOpen = traceConfig.traceOpen;
+	}
+	if(!traceOpen){
+		log('trace is close')
+		return;
+	}
 	let zkServer  = traceConfig.zkServer;
 	let client = new Client(zkServer);  
 	debug = traceConfig.traceDebug;
+	traceTopic = traceConfig.traceTopic || DEFAULT_TRACE_TOPIC;
 	kafkaProducer = new Producer(client, {  
 		requireAcks: 0  
 	}); 
 	kafkaProducer.on('ready', function () {
-		log(`kafka ready at zk:${zkServer}`);
+		log(`trace kafka ready at zk:${zkServer},topic:${traceTopic}`);
 	});
  
 	kafkaProducer.on('error', function (err) {
@@ -169,7 +178,7 @@ async function send(span){
 	let spanStr = JSON.stringify([span]); 
 	debugMsg('sapn:' + spanStr);
 	let payloads = [{
-		topic: TRACE_TOPIC,
+		topic: traceTopic,
 		messages: spanStr,
 		partition:0
 	}];
