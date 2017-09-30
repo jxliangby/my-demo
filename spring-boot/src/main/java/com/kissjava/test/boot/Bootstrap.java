@@ -58,6 +58,20 @@ public class Bootstrap {
 		}
 		openApi("15s", request, response);
 	}
+	@RequestMapping("/dev")
+	public void dev(HttpServletRequest request, HttpServletResponse response){
+		openApi("dev", request, response);
+	}
+	
+	@RequestMapping("/b1sit")
+	public void sit(HttpServletRequest request, HttpServletResponse response){
+		openApi("b1sit", request, response);
+	}
+	
+	@RequestMapping("/test")
+	public void test(HttpServletRequest request, HttpServletResponse response){
+		openApi("test", request, response);
+	}
 	
 	@RequestMapping("/10s")
 	public void s10(HttpServletRequest request, HttpServletResponse response){
@@ -140,9 +154,10 @@ public class Bootstrap {
 		
 		encoding(response); 
 		Cookie[] cookies = request.getCookies();
-		
-		for(Cookie cookie:cookies){
-			System.out.println(cookie.getValue()+"--"+cookie.getName());
+		if(cookies!=null && cookies.length>0){
+			for(Cookie cookie:cookies){
+				System.out.println(cookie.getValue()+"--"+cookie.getName());
+			}
 		}
 		JSONObject root = new JSONObject();
 		JSONObject respJson= new JSONObject();
